@@ -50,7 +50,7 @@ class Service(object):
         return self.client.api.inspect_container(self.container.id)
 
     def ip_address(self):
-        return self.inspect()['NetworkSettings']['IPAddress']
+        return '127.0.0.1' # self.inspect()['NetworkSettings']['IPAddress']
 
     def wait(self, timeout=None):
         if timeout is None:
@@ -105,7 +105,8 @@ class Mongo(Service):
     port = 27017
 
     def __init__(self, tag, wait=False, **kwargs):
-        Service.__init__(self, 'mongo:' + tag)
+        ports = {'{}/tcp'.format(self.port): ('127.0.0.1', self.port)}
+        Service.__init__(self, 'mongo:' + tag, ports=ports)
         if wait:
             self.wait()
 
