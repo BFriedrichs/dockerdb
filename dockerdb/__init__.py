@@ -9,7 +9,7 @@ import functools
 import docker
 
 
-__version__ = '__version__ = '0.1.1''
+__version__ = '__version__ = '0.1.2''
 start_time = int(time.time())
 counter = 0
 client = docker.from_env(version='auto')
