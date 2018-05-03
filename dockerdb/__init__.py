@@ -50,7 +50,7 @@ class Service(object):
         return self.client.api.inspect_container(self.container.id)
 
     def ip_address(self):
-        return '127.0.0.1'  # self.inspect()['NetworkSettings']['IPAddress']
+        return self.inspect()['NetworkSettings']['IPAddress']
 
     def wait(self, timeout=None):
         if timeout is None:
